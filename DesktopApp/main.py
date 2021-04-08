@@ -1,8 +1,6 @@
-import subprocess
+import serial
 
 if __name__ == '__main__':
-    result = subprocess.run(["serialdrv/serdrv", "Vasko"])
-
-    stat = result.check_returncode()
-    if stat != None:
-        print ("ERROR #{}".format(stat))
+    driver = serial.SerialDriver("serialdrv/serdrv")
+    o_list = ["emo", "e", "totalen", "pederast"]
+    driver.out(o_list)
