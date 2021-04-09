@@ -10,14 +10,11 @@
 
 #include "uartdvrinc.h"
 
-void UART_enable(unsigned int baud, unsigned long f_cpu){
-	unsigned int ubrr = f_cpu / (16 * baud) - 1;
-	
-	UBRR0L = (uint8_t) ubrr;
-	UBRR0H = (uint8_t) ubrr >> 8;
+void UART_enable(void){
+	UBRR0L = UBRRL_VALUE;
+	UBRR0H = UBRRH_VALUE;
 	
 	UCSR0B = (1 << TXEN0) | (1 << RXEN0);
-	UCSR0C = (1 << UCSZ00) | (1 << UCSZ01);
 }
 
 void UART_disable(void){

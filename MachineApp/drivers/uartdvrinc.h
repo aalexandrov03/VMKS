@@ -11,11 +11,13 @@
 #ifndef UARTDVRINC_H_
 #define UARTDVRINC_H_
 
+#define BAUD 9600 
+#define F_CPU 16000000UL
+
 #include <avr/io.h>
+#include <util/setbaud.h>
 
-uint8_t uart_buffer;
-
-void UART_enable(unsigned int, unsigned long);
+void UART_enable(void);
 void UART_disable(void);
 
 void UART_double_speed(int);
