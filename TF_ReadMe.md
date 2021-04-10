@@ -5,4 +5,3 @@
 <br>
 <p> Чрез програма на компютъра се подава списък с лекарства и съответната бройка, след което машината автоматично взима посочените лекарства! </p>
 <br>
-![alt text](https://www.google.com/search?q=golf+2&sxsrf=ALeKk01sCaS1qsRHFig3KnkaqZZiyxfaxA:1618015215243&tbm=isch&source=iu&ictx=1&fir=w6nJmoQOyW1GUM%252C2EwhexpiwtcggM%252C_&vet=1&usg=AI4_-kSd_AltUef26pB0qqdPBgyx3S13fQ&sa=X&ved=2ahUKEwiT3ZSxuPLvAhVBJMUKHfuFC88Q9QF6BAgPEAE#imgrc=w6nJmoQOyW1GUM)
