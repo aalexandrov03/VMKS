@@ -1,3 +1,3 @@
-<h1> README </h1>
-
-<p> This is a normal line </p>
+<h1> Аптекарска Vending Машина </h1>
+<br>
+<h3> Oписание </h3>
