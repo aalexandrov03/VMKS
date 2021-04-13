@@ -16,14 +16,13 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-#include <avr/sfr_defs.h>
 
 struct stepdvr_t {
 	unsigned int PULSE_PER_REV, ENA_PIN, DIR_PIN, PUL_PIN;
 	unsigned int PUL_T;
 };
 
-void _initDriver(struct stepdvr_t*, unsigned int, unsigned int, unsigned int, unsigned int);
+void _init(struct stepdvr_t*, unsigned int, unsigned int, unsigned int, unsigned int);
 void _setSpeed(struct stepdvr_t*, unsigned int);
 int _rotate(struct stepdvr_t*, unsigned int, unsigned int);
 

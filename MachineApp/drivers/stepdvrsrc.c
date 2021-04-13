@@ -10,7 +10,7 @@
 
 #include "stepdvrinc.h"
 
-void _initDriver(struct stepdvr_t* driver, unsigned int ppr, unsigned int ena, unsigned int dir, unsigned int pul){
+void _init(struct stepdvr_t* driver, unsigned int ppr, unsigned int ena, unsigned int dir, unsigned int pul){
 	driver -> PULSE_PER_REV = ppr;
 	
 	driver -> ENA_PIN = ena;
@@ -21,7 +21,7 @@ void _initDriver(struct stepdvr_t* driver, unsigned int ppr, unsigned int ena, u
 	
 	PORTB = 0;
 	DDRB = 0;
-	DDRB |= _BV(ena) | _BV(dir) | _BV(pul);
+	DDRB |= (1 << ena) | (1 << dir) | (1 << pul);
 }
 
 void _setSpeed(struct stepdvr_t* driver, unsigned int speed){
@@ -29,28 +29,28 @@ void _setSpeed(struct stepdvr_t* driver, unsigned int speed){
 }
 
 int _rotate(struct stepdvr_t* driver, unsigned int revs, unsigned int dir){
-	PORTB |= _BV(driver -> ENA_PIN);
+	PORTB |= (1 << driver -> ENA_PIN);
 	
 	if (driver -> PULSE_PER_REV == 0 || driver -> PUL_T == 0)
 		return -1; 
 
 	if (dir)
-		PORTB |= _BV(driver -> DIR_PIN);
+		PORTB |= (1 << driver -> DIR_PIN);
 	else
-		PORTB &= ~_BV(driver -> DIR_PIN);
+		PORTB &= ~(1 << driver -> DIR_PIN);
 
 	for (unsigned int pulse = 0; pulse < (driver -> PULSE_PER_REV) * revs; pulse ++){
-		PORTB |= _BV(driver -> PUL_PIN);
+		PORTB |= (1 << driver -> PUL_PIN);
 		
 		for (unsigned int t = 0; t < driver -> PUL_T; t ++)
 			_delay_us(1);
 		
-		PORTB &= ~_BV(driver -> PUL_PIN);
+		PORTB &= ~(1 << driver -> PUL_PIN);
 		
 		for (unsigned int t = 0; t < driver -> PUL_T; t ++)
 			_delay_us(1);
 	}
 
-	PORTB &= ~_BV(driver -> ENA_PIN);
+	PORTB &= ~(1 << driver -> ENA_PIN);
 	return 0;
 }

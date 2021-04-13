@@ -13,7 +13,8 @@
 void UART_enable(void){
 	UBRR0L = UBRRL_VALUE;
 	UBRR0H = UBRRH_VALUE;
-	UCSR0B = _BV(TXEN0) | _BV(RXEN0);
+	
+	UCSR0B = (1 << TXEN0) | (1 << RXEN0);
 }
 
 void UART_disable(void){
@@ -22,17 +23,21 @@ void UART_disable(void){
 
 void UART_double_speed(int flag){
 	if (flag)
-		UCSR0A |= _BV(U2X0);
+		UCSR0A |= (1 << U2X0);
 	else
-		UCSR0A &= ~_BV(U2X0);
+		UCSR0A &= ~(1 << U2X0);
 }
 
 void UART_write_byte(uint8_t data){
-	loop_until_bit_is_set(UCSR0A, UDRE0);
+	while (!(UCSR0A & (1 << UDRE0)));
 	UDR0 = data;
 }
 
 uint8_t UART_read_byte(void){
-	loop_until_bit_is_set(UCSR0A, RXC0);
-	return (uint8_t) UDR0;
+	uint8_t data = 0;
+	
+	while (!(UCSR0A & (1 << RXC0)));
+	data = UDR0;
+	
+	return data;
 }
