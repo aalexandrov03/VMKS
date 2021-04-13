@@ -1,7 +1,7 @@
 {
     "Header": {
         "Comment": "All values are metric (mm)",
-        "CreationDate": "2021-04-07T10:03:44Z",
+        "CreationDate": "2021-04-13T13:00:16Z",
         "GenerationSoftware": {
             "Application": "EAGLE",
             "Vendor": "Autodesk",
@@ -17,8 +17,8 @@
         },
         "Owner": "Alexander Alexandrov <alexander.rumenov.alexandrov@gmail.com>",
         "Size": {
-            "X": 115.55,
-            "Y": 50.47
+            "X": 87.61,
+            "Y": 61.9
         }
     }
 }
