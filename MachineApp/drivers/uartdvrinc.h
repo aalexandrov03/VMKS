@@ -16,6 +16,7 @@
 
 #include <avr/io.h>
 #include <util/setbaud.h>
+#include <avr/sfr_defs.h>
 
 void UART_enable(void);
 void UART_disable(void);
